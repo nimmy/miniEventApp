@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './app/layout/App';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom';
 
 const domElement = document.getElementById('root');
 
 let render = () => {
-    ReactDOM.render(<App />, domElement);
+    ReactDOM.render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>,
+    domElement);
 }
 
 if (module.hot) {
