@@ -10,6 +10,7 @@ import PeopleDashboard from '../../features/user/PeopleDashboard/PeopleDashboard
 import SettingDashboardPage from '../../features/user/Settings/SettingDashboardPage';
 import UserDetailed from '../../features/user/UserDetailed/UserDetailed';
 import EventForm from '../../features/event/EventForm/EventForm';
+import TestComponent from '../../features/testaera/TestComponent';
 
 
 
@@ -30,6 +31,7 @@ export default class App extends Component{
             <Route path="/profile/:id" component={UserDetailed} />
             <Route path="/settings" component={ SettingDashboardPage} />
             <Route path="/createEvent" component={ EventForm } />
+            <Route path="/test" component={ TestComponent } />
           </Container>
         </Fragment>
         )} />

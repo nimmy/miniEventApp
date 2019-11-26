@@ -29,6 +29,7 @@ class NavBar extends React.Component{
                 </Menu.Item>
                 <Menu.Item name="Events" as={NavLink} to='/events' />
                 <Menu.Item name="People" as={NavLink} to='/peoples' />
+                <Menu.Item name="Test Component" as={NavLink} to='/test' />
                 <Menu.Item>
                     <Button as={Link} floated="right" positive inverted content="Create Event" to='/CreateEvent' />
                 </Menu.Item>
