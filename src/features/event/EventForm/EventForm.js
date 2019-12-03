@@ -1,15 +1,34 @@
 import React from 'react';
+import {connect}  from 'react-redux';
 import { Segment, Form, Button } from 'semantic-ui-react';
+import { createEvent, updateEvent } from '../eventActions';
+import cuid from 'cuid';
 
-export default class EventForm extends React.Component{
-    state = {
+const mapState = (state, ownProps) => {
+    const eventId = ownProps.match.params.id;
+    let event = {
         title: '',
         date: '',
         city: '',
         venue: '',
         hostedBy: ''
-    }
+    }; 
 
+    if(eventId && state.events.length > 0) {
+        event = state.events.filter(event => event.id === eventId)[0];
+    }
+    return {
+        event
+    }
+}
+
+const actions ={
+    createEvent,
+    updateEvent
+}
+
+class EventForm extends React.Component{
+    state ={...this.props.event}; 
     componentDidMount() {
         if(this.props.selectedEvent !== null) {
             this.setState({
@@ -21,9 +40,16 @@ export default class EventForm extends React.Component{
         evt.preventDefault();
         if(this.state.id) {
             console.log(this.props);
-            this.props.undateEvent(this.state);
+            this.props.updateEvent(this.state);
+            this.props.history.push(`/events/${this.state.id}`);
         } else {
-            this.props.createEvent(this.state);
+            const newEvent = {
+                ...this.state,
+                id : cuid(),
+                hostPhotoURL : '/assets/user.png'
+            }
+            this.props.createEvent(newEvent);
+            this.props.history.push(`/events/${newEvent.id}`);
         }
     }
 
@@ -33,7 +59,6 @@ export default class EventForm extends React.Component{
         })
     }
     render() {
-        const {cancelFormOpen} = this.props;
         const { title, date, city, venue, hostedBy } = this.state;
         return(
             <React.Fragment>
@@ -62,10 +87,12 @@ export default class EventForm extends React.Component{
                         <Button positive type="submit">
                         Submit
                         </Button>
-                        <Button type="button" onClick={cancelFormOpen}>Cancel</Button>
+                        <Button type="button" onClick={this.props.history.goBack}>Cancel</Button>
                     </Form>
                 </Segment>
             </React.Fragment>
         )
     }
 }
+
+export default connect(mapState, actions)(EventForm);

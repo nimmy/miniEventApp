@@ -1,10 +1,11 @@
 import React from 'react';
 import { Segment, Item, Button, Icon, List } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import EventListAddendee from './EventListAddendee';
 
 export default class EventListItem extends React.Component{
     render() {
-        const {event, selectEvent, deleteEvent} = this.props;
+        const {event, deleteEvent} = this.props;
         return(
             <React.Fragment>
                 <Segment.Group>
@@ -15,7 +16,7 @@ export default class EventListItem extends React.Component{
                             <Item.Content>
                             <Item.Header as="a">{event.title}</Item.Header>
                             <Item.Description>
-                                Hosted by <a href="#">{event.hostedBy}</a>
+                                Hosted by {event.hostedBy}
                             </Item.Description>
                             </Item.Content>
                         </Item>
@@ -36,8 +37,8 @@ export default class EventListItem extends React.Component{
                     </Segment>
                     <Segment clearing>
                         <span>{event.description}</span>
-                        <Button onClick={() => deleteEvent(event.id)} as="a" color="red" floated="right" content="Delete" />
-                        <Button onClick={() => selectEvent(event)} as="a" color="teal" floated="right" content="View" />
+                        <Button onClick={() => deleteEvent(event.id)} color="red" floated="right" content="Delete" />
+                        <Button  as={Link} to={`/events/${event.id}`} color="teal" floated="right" content="View" />
                     </Segment>
                 </Segment.Group>
             </React.Fragment>

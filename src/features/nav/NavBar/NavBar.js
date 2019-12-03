@@ -27,7 +27,7 @@ class NavBar extends React.Component{
                     <img src="/assets/logo.png" alt="logo" />
                     Re-vents
                 </Menu.Item>
-                <Menu.Item name="Events" as={NavLink} to='/events' />
+                <Menu.Item exact name="Events" as={NavLink} to='/events' />
                 <Menu.Item name="People" as={NavLink} to='/peoples' />
                 <Menu.Item name="Test Component" as={NavLink} to='/test' />
                 <Menu.Item>
