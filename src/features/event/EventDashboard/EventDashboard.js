@@ -34,7 +34,7 @@ class EventDashboard extends React.Component{
                 <Grid.Column width={10}>
                     <EventList 
                       deleteEvent={this.handleDeleteEvent} 
-                      events={events} />
+                      event={events} />
                 </Grid.Column>
                 <Grid.Column width={6}>
                     <h2>Activity Feed</h2>

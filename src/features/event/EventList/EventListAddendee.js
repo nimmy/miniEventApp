@@ -4,6 +4,7 @@ import { List, Image } from 'semantic-ui-react';
 export default class EventListAddendee extends React.Component{
     render() {
         const {attendee} = this.props;
+        console.log(this.props);
         return(
             <React.Fragment>
                 <List.Item>

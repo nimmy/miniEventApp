@@ -6,6 +6,7 @@ import EventListAddendee from './EventListAddendee';
 export default class EventListItem extends React.Component{
     render() {
         const {event, deleteEvent} = this.props;
+        console.log(this.props)
         return(
             <React.Fragment>
                 <Segment.Group>
